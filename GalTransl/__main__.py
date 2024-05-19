@@ -30,11 +30,11 @@ def worker(project_dir: str, config_file_name: str, translator: str, show_banner
     try:
         run(run_galtransl(cfg, translator))
     except KeyboardInterrupt:
-        LOGGER.info("正在等待现有请求返回...")
+        LOGGER.info("Waiting for the current request to return...")
         loop.stop()
         LOGGER.info("Goodbye.")
     except RuntimeError as ex:
-        LOGGER.error("程序遇到问题，即将退出（诊断信息：%s）", ex)
+        LOGGER.error("The program has encountered an issue and will exit soon (diagnostic information: %s).", ex)
     except BaseException as ex:
         print(ex)
         traceback.print_exception(type(ex), ex, ex.__traceback__)
